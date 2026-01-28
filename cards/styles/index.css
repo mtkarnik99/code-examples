@@ -1,0 +1,71 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* Header */
+header {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* Mobile First - Cards Stack */
+.container {
+  max-width: 75rem;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.card {
+  background-color: white;
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+
+.card h2 {
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  color: #666;
+}
+
+/* Tablet - Two Columns */
+@media (min-width: 48em) {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .card {
+    flex: 1 1 calc(50% - 0.5rem);
+    margin-bottom: 0;
+  }
+}
+
+/* Desktop - Three Columns */
+@media (min-width: 64em) {
+  .card {
+    flex: 1 1 calc(33.333% - 0.67rem);
+  }
+}
