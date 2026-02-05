@@ -1,0 +1,35 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 2rem;
+  background-color: #f0f0f0;
+}
+
+h1 {
+  color: #333;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+#container {
+  background-color: white;
+  padding: 2rem;
+  min-height: 10rem;
+}
+
+.item {
+  background-color: #ecf0f1;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
