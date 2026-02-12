@@ -1,0 +1,106 @@
+body {
+  font-family: Arial, sans-serif;
+  padding: 2rem;
+  background-color: #f0f0f0;
+  max-width: 45rem;
+  margin: 0 auto;
+}
+
+h1 {
+  color: #333;
+  text-align: center;
+}
+
+.controls {
+  background-color: white;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  padding: 0.75rem 2rem;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+button:disabled {
+  background-color: #95a5a6;
+  cursor: not-allowed;
+}
+
+#output {
+  background-color: white;
+  padding: 2rem;
+  min-height: 10rem;
+  border-radius: 8px;
+}
+
+.loading {
+  color: #f39c12;
+  font-style: italic;
+  text-align: center;
+  padding: 2rem;
+}
+
+.step {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #e8f5e9;
+  border-left: 4px solid #27ae60;
+  border-radius: 4px;
+}
+
+.step strong {
+  color: #27ae60;
+}
+
+.user-profile {
+  border: 2px solid #3498db;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.user-profile h2 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.user-profile p {
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.error {
+  color: #e74c3c;
+  padding: 1rem;
+  background-color: #fadbd8;
+  border-left: 4px solid #e74c3c;
+  border-radius: 4px;
+}
