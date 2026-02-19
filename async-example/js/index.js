@@ -26,42 +26,109 @@ const userPosts = {
  * @param {number} userId - The ID of the user to fetch
  * @returns {Promise} Promise that resolves with user object or rejects if not found
  */
-function fetchUser(userId){
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            const user = users[userId];
-            if(user){
-                // User found - fulfill the promise with user data
-                resolve(user);
-            }
-            else{
-                // User not found - reject the promise with error message
-                reject('User not found!');
-            }
-        }, 2000);  // 2-second delay simulates network request
-    });
+// function fetchUser(userId){
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             const user = users[userId];
+//             if(user){
+//                 // User found - fulfill the promise with user data
+//                 resolve(user);
+//             }
+//             else{
+//                 // User not found - reject the promise with error message
+//                 reject('User not found!');
+//             }
+//         }, 2000);  // 2-second delay simulates network request
+//     });
+// }
+
+//Real APi version
+async function fetchUser(userId){
+    const response = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
+
+    if(!response.ok){
+        throw new Error(`User not found ! Message : ${response.status}`);
+    }
+
+    const user = await response.json();
+
+    return user; 
 }
+
+
 
 /**
  * Fetches posts for a specific user (simulates API call with 2-second delay)
  * @param {number} userId - The ID of the user whose posts to fetch
  * @returns {Promise} Promise that resolves with array of posts or rejects if not found
  */
-function fetchUserPosts(userId){
-    return new Promise((resolve, reject) => {
-         setTimeout(() => {
-            const posts = userPosts[userId];
-            if(posts){
-                // Posts found - fulfill promise with posts array
-                resolve(posts);
-            }
-            else{
-                // No posts found - reject promise
-                reject('No posts found for this user');
-            }
-         }, 2000);  // 2-second delay
-    });
+// function fetchUserPosts(userId){
+//     return new Promise((resolve, reject) => {
+//          setTimeout(() => {
+//             const posts = userPosts[userId];
+//             if(posts){
+//                 // Posts found - fulfill promise with posts array
+//                 resolve(posts);
+//             }
+//             else{
+//                 // No posts found - reject promise
+//                 reject('No posts found for this user');
+//             }
+//          }, 2000);  // 2-second delay
+//     });
+// }
+
+// Real API version
+async function fetchUserPosts(userId){
+    const response = await fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`);
+
+    if(!response.ok){
+        throw new Error(`User not found ! Message : ${response.status}`);
+    }
+
+    const posts = await response.json();
+
+    return posts; 
 }
+
+// Select elements
+const button = document.querySelector('#fetch-btn');
+const input = document.querySelector('#user-id');
+const output = document.querySelector('#output');
+
+button.addEventListener('click', async function(params) {
+    const userId = input.value;
+    button.disabled = true;
+
+    try{
+    // Step 1: Fetch user data
+    const user = await fetchUser(userId);
+    output.innerHTML = `<div class="step"><strong>Step 1:</strong> Fetched user: ${user.name}</div>`;
+
+    // Step 2: Fetch posts for that user
+    const posts = await fetchUserPosts(user.id);
+    output.innerHTML += `<div class="step"><strong>Step 2:</strong> Fetched ${posts.length} posts</div>`;
+
+    // Step 3: Display complete profile
+    output.innerHTML += `
+      <div class="user-profile">
+        <h2>${user.name}</h2>
+        <p><strong>Username:</strong> ${user.username}</p>
+        <p><strong>Email:</strong> ${user.email}</p>
+        <p><strong>City:</strong> ${user.address.city}</p>
+        <p><strong>Company:</strong> ${user.company.name}</p>
+        <h3>Recent Posts:</h3>
+        <ul>${posts.slice(0, 5).map(post => `<li><strong>${post.title}</strong></li>`).join('')}</ul>
+      </div>`;
+    }
+    catch(error){
+         throw new Error(`Users not found ! Message : ${response.status}`);
+    }
+    finally{
+        button.disabled = false;
+    }
+    
+});
 
 /**
  * Counts the number of posts (simulates processing with 2-second delay)
