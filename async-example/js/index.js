@@ -258,3 +258,124 @@ async function showMultipleUsers(userIds){
 
 // Fetch data for all three users at once
 showMultipleUsers([1, 2, 3]);
+
+
+// ==========================================
+// OPTIONAL CHALLENGES FOR PRACTICE
+// ==========================================
+
+/*
+CHALLENGE 1: ADD INPUT VALIDATION (Easy - 5-10 minutes)
+----------------------------------------------------
+Add validation to the button click handler to ensure userId is between 1-10.
+
+TODO:
+1. Check if userId is empty, less than 1, or greater than 10
+2. If invalid, display an error message and return early
+3. This prevents unnecessary API calls
+
+HINT: Add this check right after const userId = input.value;
+HINT: Use output.innerHTML = '<p class="error">...</p>' to show error
+HINT: Use return; to exit the function early
+
+
+CHALLENGE 2: ADD SEARCH POSTS FEATURE (Medium - 15-20 minutes)
+----------------------------------------------------
+Create a search function that fetches all posts and filters by a search term.
+
+TODO:
+1. Add HTML elements for search (input and button)
+2. Create async function searchPosts(searchTerm)
+   - Fetch all posts: 'https://jsonplaceholder.typicode.com/posts'
+   - Parse the JSON response
+   - Filter posts where title or body includes searchTerm (case-insensitive)
+   - Return filtered results
+3. Add event listener to search button
+   - Validate search term is not empty
+   - Show loading state
+   - Call searchPosts and display results
+   - Handle errors
+
+HINTS:
+- Use .filter() to filter the posts array
+- Use .toLowerCase() on both searchTerm and post fields for case-insensitive
+- Use .includes() to check if searchTerm exists
+- Display first 10 results with .slice(0, 10)
+
+
+CHALLENGE 3: CREATE A NEW POST (Medium - 15-20 minutes)
+----------------------------------------------------
+Add functionality to create a new post using POST request.
+
+TODO:
+1. Add HTML elements (title input, body textarea, create button)
+2. Create async function createPost(postData)
+   - Use fetch with POST method
+   - Set headers: { 'Content-Type': 'application/json' }
+   - Set body: JSON.stringify(postData)
+   - Check response.ok
+   - Parse and return JSON
+3. Add event listener to create button
+   - Get title and body from inputs
+   - Validate inputs are not empty
+   - Create post data object: { title, body, userId }
+   - Call createPost function
+   - Display success message with created post details
+
+HINTS:
+- POST URL: 'https://jsonplaceholder.typicode.com/posts'
+- postData should have: title, body, userId (as number)
+- JSONPlaceholder doesn't actually save - it's a fake API
+- Response will include a fake ID (101)
+
+
+CHALLENGE 4: ADD LOADING SPINNER (Medium - 15 minutes)
+----------------------------------------------------
+Replace text loading message with an animated CSS spinner.
+
+TODO:
+1. Add CSS for spinner:
+   - Create circle with border and border-radius: 50%
+   - Make top border different color
+   - Add rotation animation with @keyframes
+   - Center with margin: 0 auto
+2. Update JavaScript:
+   - Change output.innerHTML from text to <div class="spinner"></div>
+
+HINTS:
+- border: 4px solid #f3f3f3;
+- border-top: 4px solid #3498db;
+- animation: spin 1s linear infinite;
+- @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+
+CHALLENGE 5: ADD RANDOM USER BUTTON (Easy - 10 minutes)
+----------------------------------------------------
+Add a button that fetches a random user ID between 1-10.
+
+TODO:
+1. Add HTML button: <button id="random-btn">Get Random User</button>
+2. Select the button in JavaScript
+3. Add click event listener that:
+   - Generates random number between 1-10
+   - Sets input.value to that number
+   - Triggers the fetch button click
+
+HINTS:
+- Random number: Math.floor(Math.random() * 10) + 1
+- Set input: input.value = randomUserId
+- Trigger click: button.click()
+
+
+BONUS CHALLENGES:
+----------------------------------------------------
+- Fetch user's albums: 'https://jsonplaceholder.typicode.com/albums?userId=${userId}'
+- Fetch user's todos: 'https://jsonplaceholder.typicode.com/todos?userId=${userId}'
+- Fetch comments for a post: 'https://jsonplaceholder.typicode.com/comments?postId=${postId}'
+- Add "Load More Posts" button to show more than 5 posts
+- Display completed vs incomplete todos count
+- Show photos from an album: 'https://jsonplaceholder.typicode.com/photos?albumId=${albumId}'
+
+All JSONPlaceholder endpoints: https://jsonplaceholder.typicode.com/
+*/
+
